@@ -2,11 +2,14 @@ import datetime
 from timeit import default_timer as timer
 from faker import Faker
 
+##############################
 # Django specific settings (Please this BEFORE import model class)
+##############################
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 import django
 django.setup()
+##############################
 
 from django.db import transaction
 from db.models import Person

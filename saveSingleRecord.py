@@ -1,9 +1,13 @@
-# Django specific settings
 import datetime
+
+##############################
+# Django specific settings (Please this BEFORE import model class)
+##############################
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 import django
 django.setup()
+##############################
 
 from db.models import Person
 
