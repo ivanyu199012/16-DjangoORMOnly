@@ -11,6 +11,7 @@ import django
 django.setup()
 ##############################
 
+# Import your models for use in your script
 from django.db import transaction
 from db.models import Person
 

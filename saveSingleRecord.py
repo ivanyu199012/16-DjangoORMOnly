@@ -9,6 +9,7 @@ import django
 django.setup()
 ##############################
 
+# Import your models for use in your script
 from db.models import Person
 
 def main():
