@@ -1,0 +1,4 @@
+#
+ormOnlyEnv/
+*_pycache_*
+test.sqlite
