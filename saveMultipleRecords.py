@@ -1,15 +1,15 @@
-# Django specific settings
 import datetime
 from timeit import default_timer as timer
-import os
+from faker import Faker
 
+# Django specific settings (Please this BEFORE import model class)
+import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 import django
 django.setup()
 
-from db.models import Person
 from django.db import transaction
-from faker import Faker
+from db.models import Person
 
 def main():
   fake = Faker()
@@ -33,15 +33,17 @@ def main():
   start = timer()
   for person in person_list_1:
     person.save()
-  print( f"Time cost for no transaction = {timer() - start}s" )
+  print(f"Time cost for no transaction = {round(timer() - start, 3)}s")
 
-  chunks = [person_list_2[x:x+10] for x in range(0, len(person_list_2), 10)]
+  # chunk the list to be sublist and each contains 10 elements
+  chunks = [person_list_2[x:x + 10] for x in range(0, len(person_list_2), 10)]
   start = timer()
   for chunk in chunks:
     with transaction.atomic():
       for person in chunk:
         person.save()
-  print( f"Time cost for transaction atomic = {timer() - start}s" )
+  print(f"Time cost for transaction atomic = {round(timer() - start, 3)}s")
+
 
 if __name__ == '__main__':
   main()
